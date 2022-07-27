@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: ghcr.io/varshavaradarajan/ghcr-public:8a38069799481cd29bf7418604a40ca2c874f556
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: my-app-2
+  namespace: default
+spec:
+  containers:
+    - name: my-app-2
+      image: ghcr.io/varshavaradarajan/ghcr-public:8a38069799481cd29bf7418604a40ca2c874f556
+
